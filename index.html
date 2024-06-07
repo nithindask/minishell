@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="icon.png" rel="icon">
+<title>Minishell</title>
+<style>
+  @font-face {
+    font-family: "Consolas";
+    src: url('Consolas.ttf') format('truetype');
+}
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Consolas";
+    font-optical-sizing: auto;
+    background-color: #000;
+    color: #ccc;
+    font-size: 14px;
+  }
+
+  body.dark-mode {
+    background-color: #000;
+    color: #ccc;
+  }
+
+  body.light-mode {
+    background-color: #fff;
+    color: #000;
+  }
+
+  .terminal {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  .output {
+    flex-grow: 1;
+    padding: 10px;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+  }
+
+  .input-prefix {
+    color: #ccc;
+    margin-right: 5px;
+  }
+
+  body.dark-mode .input-prefix {
+    color: #ccc;
+  }
+
+  body.light-mode .input-prefix {
+    color: #000;
+  }
+
+  .input {
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    font-family: Consolas;
+    outline: none;
+    width: calc(100% - 30px);
+    font-size: 14px;
+  }
+
+  body.dark-mode .input {
+    color: #ccc;
+  }
+
+  body.light-mode .input {
+    color: #000;
+  }
+
+  .input:focus {
+    outline: none;
+  }
+
+  ::selection {
+    color: #000;
+    background-color: #ccc;
+  }
+
+  body.dark-mode ::selection {
+    color: #000;
+    background-color: #ccc;
+  }
+
+  body.light-mode ::selection {
+    color: #fff;
+    background-color: #000;
+  }
+
+  a {
+    color: lightblue;
+    text-decoration: none;
+  }
+
+  body.dark-mode a {
+    color: lightblue;
+  }
+
+  body.light-mode a {
+    color: blue;
+  }
+
+  a:hover {
+    color: blue;
+    background-color: lightblue;
+  }
+
+  body.dark-mode a:hover {
+    color: blue;
+    background-color: lightblue;
+  }
+
+  body.light-mode a:hover {
+    color: lightblue;
+    background-color: blue;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="terminal" id="terminal">
+  <div class="output" id="output"></div>
+  <div class="input-container">
+    <div class="input-prefix">&gt;</div>
+    <input type="text" class="input" spellcheck="false" autofocus>
+  </div><br>
+</div>
+
+<script>
+  const input = document.querySelector('.input');
+  const output = document.querySelector('.output');
+  const terminal = document.querySelector('.terminal');
+  let isDarkMode = true;
+
+  function displayOutput(text) {
+    const isAtBottom = output.scrollHeight - output.scrollTop <= output.clientHeight;
+    output.innerHTML += `<div>${text}</div>`;
+    if (isAtBottom) {
+      scrollToBottom();
+    }
+  }
+
+  function scrollToBottom() {
+    terminal.scrollTo({
+      top: terminal.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+
+  function clearTerminal() {
+    output.innerHTML = '';
+    scrollToBottom();
+    input.focus();
+  }
+
+  function reloadPage() {
+    location.reload();
+  }
+
+  function toggleTheme() {
+    isDarkMode = !isDarkMode;
+    const body = document.querySelector('body');
+    body.classList.toggle('dark-mode');
+    body.classList.toggle('light-mode');
+  }
+
+  function getWebGLRenderer() {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (gl) {
+        const info = gl.getExtension('WEBGL_debug_renderer_info');
+        return info ? gl.getParameter(info.UNMASKED_RENDERER_WEBGL) : 'N/A';
+    } else {
+        return 'Not Supported';
+    }
+}
+
+function getPlugins() {
+    return Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') || 'None';
+}
+
+function getTotalMemory() {
+    return (navigator.deviceMemory || 'N/A').toFixed(2);
+}
+
+function getFreeMemory() {
+    return (performance.memory ? performance.memory.usedJSHeapSize : 'N/A');
+}
+
+function getBatteryPercentage() {
+    return new Promise((resolve, reject) => {
+        if (navigator.getBattery) {
+            navigator.getBattery()
+                .then(battery => {
+                    const batteryLevel = battery.level * 100;
+                    resolve(`${batteryLevel.toFixed(2)}%`);
+                })
+                .catch(error => {
+                    reject('Battery information unavailable');
+                });
+        } else {
+            reject('Battery API not supported');
+        }
+    });
+}
+
+function getDeviceOrientation() {
+    return window.screen.orientation ? window.screen.orientation.type : 'N/A';
+}
+
+function getInstalledFonts() {
+    return [...document.fonts].map(font => font.family).join(', ');
+}
+
+function getConnectionType() {
+    return navigator.connection ? navigator.connection.type : 'N/A';
+}
+
+function getConnectionSpeed() {
+    return navigator.connection ? navigator.connection.downlink + ' Mbps' : 'N/A';
+}
+
+  function handleCommand(command) {
+    switch (command.trim().toLowerCase()) {
+      case 'help':
+        displayOutput('<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays current time<br>date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays today\'s date<br>whoareyou&nbsp;&nbsp;&nbsp;&nbsp; Who is nithin ?<br>whoami&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who are you ?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Switch between dark and light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays your ip adress<br>sysinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays system information<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays battery percentage<br><br>');
+        break;
+      case 'time':
+        displayOutput(`<br>The current date is: ${new Date().toLocaleTimeString()}<br><br>`);
+        break;
+      case 'date':
+        displayOutput(`<br>Today's date is: ${new Date().toLocaleDateString()}<br><br>`);
+        break;
+      case 'whoareyou':
+        displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
+        break;
+      case 'whoami':
+        displayOutput('<br>The paradox of “Who am I?” is: we never know, but, we constantly find out.<br><br>');
+        break;
+      case 'iloveyou':
+        displayOutput('<br>I love you too 𖹭, and I always will<br><br>');
+        break;
+      case 'social':
+        displayOutput('<br>instagram&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://instagram.com/_nithin.das">instagram/_nithin.das</a><br>github&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/nithindask">github/nithindask</a><br><br>');
+        break;
+      case 'howareyou':
+        displayOutput('<br>depressed :(<br><br>');
+        break;
+      case 'ip':
+        fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+        const ip = data.ip;
+        displayOutput(`<br>Your IP address is: ${ip}<br><br>`);
+        })
+        .catch(error => {
+        console.error('Error fetching IP address:', error);
+        displayOutput(`<br>Unable to fetch IP address. Please try again later.<br><br>`);
+        });
+        break;
+        case 'sysinfo':
+          (async () => {
+          const sysInfo = `
+          <br><b>System Information:</b><br>
+          Battery: ${await getBatteryPercentage()}<br>
+          Browser: ${navigator.userAgent}<br>
+          Connection Speed: ${getConnectionSpeed()}<br>
+          Connection Type: ${getConnectionType()}<br>
+          CPU Cores: ${navigator.hardwareConcurrency || 'N/A'}<br>
+          Device Orientation: ${getDeviceOrientation()}<br>
+          Do Not Track: ${navigator.doNotTrack}<br>
+          Installed Fonts: ${getInstalledFonts()}<br>
+          Java Enabled: ${navigator.javaEnabled()}<br>
+          Local Storage: ${typeof localStorage !== 'undefined'}<br>
+          Online: ${navigator.onLine}<br>
+          Platform: ${navigator.platform}<br>
+          Platform Version: ${navigator.platform}<br>
+          Plugins/Extensions: ${getPlugins()}<br>
+          Screen Resolution: ${screen.width}x${screen.height}<br>
+          Total Memory: ${getTotalMemory()} MB<br>
+          Window Size: ${window.innerWidth}x${window.innerHeight}<br>
+          WebGL Renderer: ${getWebGLRenderer()}<br>
+          `;
+        displayOutput(sysInfo);
+        })();
+        break;
+      case 'battery':
+        (async () => {
+        const sysInfo = `
+        <br>${await getBatteryPercentage()}<br>
+        `;
+        displayOutput(sysInfo);
+        })();
+        break;
+      case 'cls':
+        clearTerminal();
+        break;
+      case 'refresh':
+        reloadPage();
+        break;
+      case 'theme':
+        toggleTheme();
+        displayOutput(`<br>Switched to ${isDarkMode ? 'dark' : 'light'} theme.<br><br>`); // Display the mode
+        break;
+      default:
+        displayOutput(`<br>\'${command}\' is not recognized as an internal or external command,
+operable program or batch file.`);
+    }
+  }
+  
+  input.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const command = input.value;
+      input.value = '';
+      displayOutput(`<span>&gt;</span> ${command}`);
+      handleCommand(command);
+      setTimeout(scrollToBottom, 0);
+    }
+  });
+
+  input.addEventListener('blur', function() {
+    input.focus();
+  });
+
+  window.onload = function() {
+    displayOutput('(c) Nithin Das. All rights reserved.<br>For a list of available commands, type \'help\'.<br><br><br>');
+    setTimeout(scrollToBottom, 0);
+  };
+</script>
+
+</body>
+</html>
