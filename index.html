@@ -239,7 +239,7 @@ function getConnectionSpeed() {
   function handleCommand(command) {
     switch (command.trim().toLowerCase()) {
       case 'help':
-        displayOutput('<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays current time<br>date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays today\'s date<br>whoareyou&nbsp;&nbsp;&nbsp;&nbsp; Who is nithin ?<br>whoami&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who are you ?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Switch between dark and light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays your ip adress<br>sysinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays system information<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays battery percentage<br><br>');
+        displayOutput('<br>time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays current time<br>date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays today\'s date<br>whoareyou&nbsp;&nbsp;&nbsp;&nbsp; Who is nithin ?<br>whoami&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who are you ?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Switch website\'s theme<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays your ip adress<br>sysinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays system information<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displays battery percentage<br><br>');
         break;
       case 'time':
         displayOutput(`<br>The current date is: ${new Date().toLocaleTimeString()}<br><br>`);
@@ -278,7 +278,6 @@ function getConnectionSpeed() {
           (async () => {
           const sysInfo = `
           <br><b>System Information:</b><br>
-          Battery: ${await getBatteryPercentage()}<br>
           Browser: ${navigator.userAgent}<br>
           Connection Speed: ${getConnectionSpeed()}<br>
           Connection Type: ${getConnectionType()}<br>
