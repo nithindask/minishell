@@ -242,66 +242,69 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isExpectingPassword) {
             switch (command.trim().toLowerCase()) {
                 case 'help':
-                    displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br><br>');
-                    break;
+                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br><br>');
+                  break;
                 case 'whois':
-                    displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
-                    break;
+                  displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
+                  break;
                 case 'iloveyou':
-                    displayOutput('<br>I love you too 𖹭, and I always will<br><br>');
-                    break;
+                  displayOutput('<br>I love you too 𖹭, and I always will<br><br>');
+                  break;
                 case 'howareyou':
-                    displayOutput('<br>depressed :(<br><br>');
-                    break;
+                  displayOutput('<br>depressed :(<br><br>');
+                  break;
                 case 'social':
-                    displayOutput('<br>instagram - <a href="https://instagram.com/_nithin.das">instagram/_nithin.das</a><br>github - <a href="https://github.com/nithindask">github/nithindask</a><br><br>');
-                    break;
+                  displayOutput('<br>instagram - <a href="https://instagram.com/_nithin.das">instagram/_nithin.das</a><br>github - <a href="https://github.com/nithindask">github/nithindask</a><br><br>');
+                  break;
                 case 'ip':
-                    fetch('https://api.ipify.org?format=json')
-                        .then(response => response.json())
-                        .then(data => {
-                            const ip = data.ip;
-                            displayOutput(`<br>Your IP address is ${ip}<br><br>`);
-                        })
-                        .catch(error => {
-                            console.error('Error fetching IP address:', error);
-                            displayOutput(`<br>Unable to fetch IP address. Please try again later.<br><br>`);
-                        });
-                    break;
+                  fetch('https://api.ipify.org?format=json')
+                      .then(response => response.json())
+                      .then(data => {
+                          const ip = data.ip;
+                          displayOutput(`<br>Your IP address is ${ip}<br><br>`);
+                      })
+                      .catch(error => {
+                          console.error('Error fetching IP address:', error);
+                          displayOutput(`<br>Unable to fetch IP address. Please try again later.<br><br>`);
+                      });
+                  break;
                 case 'battery':
-                    (async () => {
-                        const sysInfo = `<br>${await getBatteryPercentage()}<br><br>`;
-                        displayOutput(sysInfo);
-                    })();
-                    break;
+                  (async () => {
+                      const sysInfo = `<br>${await getBatteryPercentage()}<br><br>`;
+                      displayOutput(sysInfo);
+                  })();
+                  break;
                 case 'cls':
-                    clearTerminal();
-                    break;
+                  clearTerminal();
+                  break;
                 case 'refresh':
-                    location.reload();
-                    break;
+                  location.reload();
+                  break;
                 case 'theme':
-                    toggleTheme();
-                    displayOutput(`<br>Switched to ${isDarkMode ? 'dark' : 'light'} theme.<br><br>`);
-                    break;
+                  toggleTheme();
+                  displayOutput(`<br>Switched to ${isDarkMode ? 'dark' : 'light'} theme.<br><br>`);
+                  break;
                 case 'pomo':
-                    if (!isTimerRunning) {
-                        pomodoroTimer(25, 5);
-                    } else {
-                        displayOutput("<br>Pomodoro timer is already running.<br><br>");
-                    }
-                    break;
+                  if (!isTimerRunning) {
+                      pomodoroTimer(25, 5);
+                  } else {
+                      displayOutput("<br>Pomodoro timer is already running.<br><br>");
+                  }
+                  break;
                 case 'doro':
-                    if (isTimerRunning) {
-                        stopTimer();
-                    } else {
-                        displayOutput("<br>No Pomodoro timer is currently running.<br><br>");
-                    }
-                    break;
+                  if (isTimerRunning) {
+                      stopTimer();
+                  } else {
+                      displayOutput("<br>No Pomodoro timer is currently running.<br><br>");
+                  }
+                  break;
                 case 'secret':
-                    displayOutput("<br>Password :<br><br>");
-                    isExpectingPassword = true;
-                    break;
+                  displayOutput("<br>Password :<br><br>");
+                  isExpectingPassword = true;
+                  break;
+                case 'passwords':
+                  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+                  break;
                 default:
                     displayOutput(`<br>I am unable to find the command '${command}'<br>For a list of available commands, type 'help'.<br><br>`);
             }
