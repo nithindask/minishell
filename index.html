@@ -130,6 +130,11 @@
     background-color: blue;
   }
 
+  .banner {
+    font-size: 24px;
+    padding-left: 10px;
+  }
+
 </style>
 </head>
 <body>
@@ -242,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isExpectingPassword) {
             switch (command.trim().toLowerCase()) {
                 case 'help':
-                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br><br>');
+                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the title<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br><br>');
                   break;
                 case 'whois':
                   displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
@@ -250,11 +255,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 case 'iloveyou':
                   displayOutput('<br>I love you too 𖹭, and I always will<br><br>');
                   break;
+                case '':
+                  displayOutput('<br>CAN"T HEAR YOU!!!<br><br>');
+                  break;
                 case 'howareyou':
                   displayOutput('<br>depressed :(<br><br>');
                   break;
                 case 'social':
-                  displayOutput('<br>instagram&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://instagram.com/_nithin.das">instagram/_nithin.das</a><br>github&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/nithindask">github/nithindask</a><br><br>');
+                  displayOutput('<br>instagram - <a href="https://instagram.com/_nithin.das">instagram/_nithin.das</a><br>github - <a href="https://github.com/nithindask">github/nithindask</a><br><br>');
+                  break;
+                case 'banner':
+                  displayOutput('<br><p class="banner">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)<br>_&nbsp;__&nbsp;___&nbsp;&nbsp;_&nbsp;_&nbsp;__&nbsp;&nbsp;_<br>|&nbsp;\'_&nbsp;`&nbsp;_&nbsp;\&nbsp;|&nbsp;|&nbsp;\'_&nbsp;&nbsp;\|&nbsp;|<br>|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|<br>|_|&nbsp;|_|&nbsp;|_|_|_|&nbsp;|_|_|<br></p>(c) Nithin Das. All rights reserved.<br>For a list of available commands, type \'help\'.<br><br>');
+                  break;
+                case 'title':
+                  displayOutput('<br><p class="banner">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)<br>_&nbsp;__&nbsp;___&nbsp;&nbsp;_&nbsp;_&nbsp;__&nbsp;&nbsp;_<br>|&nbsp;\'_&nbsp;`&nbsp;_&nbsp;\&nbsp;|&nbsp;|&nbsp;\'_&nbsp;&nbsp;\|&nbsp;|<br>|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|<br>|_|&nbsp;|_|&nbsp;|_|_|_|&nbsp;|_|_|</p><br><br>')
                   break;
                 case 'ip':
                   fetch('https://api.ipify.org?format=json')
@@ -336,13 +350,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     window.onload = function () {
-        displayOutput('(c) Nithin Das. All rights reserved.<br>For a list of available commands, type \'help\'.<br><br>');
+        displayOutput('<p class="banner">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)<br>_&nbsp;__&nbsp;___&nbsp;&nbsp;_&nbsp;_&nbsp;__&nbsp;&nbsp;_<br>|&nbsp;\'_&nbsp;`&nbsp;_&nbsp;\&nbsp;|&nbsp;|&nbsp;\'_&nbsp;&nbsp;\|&nbsp;|<br>|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|<br>|_|&nbsp;|_|&nbsp;|_|_|_|&nbsp;|_|_|<br></p>(c) Nithin Das. All rights reserved.<br>For a list of available commands, type \'help\'.<br><br>');
         scrollToBottom();
     };
 });
 
 document.addEventListener('contextmenu', event => event.preventDefault());
-                            
+
 </script>
 
 </body>
