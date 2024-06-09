@@ -135,6 +135,11 @@
     padding-left: 10px;
   }
 
+  .vibe {
+    font-size: 10px;
+    padding-left: 10px;
+  }
+
 </style>
 </head>
 <body>
@@ -247,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isExpectingPassword) {
             switch (command.trim().toLowerCase()) {
                 case 'help':
-                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the title<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br><br>');
+                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the title<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode.<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br><br>');
                   break;
                 case 'whois':
                   displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
@@ -260,6 +265,9 @@ document.addEventListener('DOMContentLoaded', function () {
                   break;
                 case 'howareyou':
                   displayOutput('<br>depressed :(<br><br>');
+                  break;
+                case 'eye':
+                  displayOutput('<br><p><font color="black">NOT </font>Good for your eyes.<br><br>');
                   break;
                 case 'social':
                   displayOutput('<br>instagram - <a href="https://instagram.com/_nithin.das">instagram/_nithin.das</a><br>github - <a href="https://github.com/nithindask">github/nithindask</a><br><br>');
@@ -325,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
     if (command.trim().toLowerCase() === 'nevergonnagiveyouup@rickroll') {
 		clearTerminal();
-        displayOutput('<br><p class="banner">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(_)<br>_&nbsp;__&nbsp;___&nbsp;&nbsp;_&nbsp;_&nbsp;__&nbsp;&nbsp;_<br>|&nbsp;\'_&nbsp;`&nbsp;_&nbsp;\&nbsp;|&nbsp;|&nbsp;\'_&nbsp;&nbsp;\|&nbsp;|<br>|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|<br>|_|&nbsp;|_|&nbsp;|_|_|_|&nbsp;|_|_|</p><br><br><br><img src="dancing.gif" alt="No offense; but your browser sucks :(" width="340" height="285">');
+        displayOutput('<br><p class="vibe">░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░&nbsp;<br>░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;░▒▓█▓▒▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;░▒▓█▓▒▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓██████▓▒░&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;░▒▓█▓▓█▓▒░&nbsp;░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;░▒▓█▓▓█▓▒░&nbsp;░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;░▒▓██▓▒░&nbsp;&nbsp;░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░&nbsp;<br></p><br><br><br><img src="dancing.gif" alt="No offense; but your browser sucks :(" width="340" height="285">');
         isExpectingPassword = false;
     } else if (command.trim().toLowerCase() === 'i1m13a12a22i11a25o21u18s9s20e18') {
         displayOutput('<br>I saw her. I loved her. I lost her;');
