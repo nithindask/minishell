@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isExpectingPassword) {
             switch (command.trim().toLowerCase()) {
                 case 'help':
-                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the title<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode.<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br>copy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View copyright info<br>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set total number<br>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Choose random number<br><br>');
+                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display all online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the title<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode.<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop and reset pomodoro timer<br>pomodor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Go to official pomodoro<br>copy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View copyright info<br><br>');
                   break;
                 case 'whois':
                   displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
@@ -339,11 +339,11 @@ document.addEventListener('DOMContentLoaded', function () {
                   pomodoroTimer(25, 5);
                   if (document.documentElement.requestFullscreen) {
                   document.documentElement.requestFullscreen();
-                } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+                } else if (document.documentElement.mozRequestFullScreen) {
                   document.documentElement.mozRequestFullScreen();
-                } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                } else if (document.documentElement.webkitRequestFullscreen) {
                   document.documentElement.webkitRequestFullscreen();
-                } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+                } else if (document.documentElement.msRequestFullscreen) {
                   document.documentElement.msRequestFullscreen();
                 }
                 } else {
@@ -355,11 +355,11 @@ document.addEventListener('DOMContentLoaded', function () {
                   stopTimer();
                   if (document.exitFullscreen) {
                   document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) { /* Firefox */
+                } else if (document.mozCancelFullScreen) {
                   document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                } else if (document.webkitExitFullscreen) {
                   document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE/Edge */
+                } else if (document.msExitFullscreen) {
                   document.msExitFullscreen();
                 }
                 } else {
@@ -372,6 +372,9 @@ document.addEventListener('DOMContentLoaded', function () {
                   break;
                 case 'passwords':
                   window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+                  break;
+                case 'pomodor':
+                  window.open('https://nithindask.github.io/pomodor', '_blank');
                   break;
                 default:
                     displayOutput(`<br>I am unable to find the command '${command}'<br>For a list of available commands, type 'help'.<br><br>`);
