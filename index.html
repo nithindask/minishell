@@ -293,35 +293,35 @@ document.addEventListener('DOMContentLoaded', function () {
                   break;
                 case 'ip':
                   fetch('https://api.ipify.org?format=json')
-                      .then(response => response.json())
-                      .then(data => {
-                          const ip = data.ip;
-                          displayOutput(`<br>Your IP address is ${ip}<br><br>`);
-                      })
-                      .catch(error => {
-                          console.error('Error fetching IP address:', error);
-                          displayOutput(`<br>Unable to fetch IP address. Please try again later.<br><br>`);
-                      });
+                  .then(response => response.json())
+                  .then(data => {
+                  const ip = data.ip;
+                  displayOutput(`<br>Your IP address is ${ip}<br><br>`);
+                  })
+                  .catch(error => {
+                  console.error('Error fetching IP address:', error);
+                  displayOutput(`<br>Unable to fetch IP address. Please try again later.<br><br>`);
+                  });
                   break;
                 case 'battery':
                   (async () => {
-                      const sysInfo = `<br>${await getBatteryPercentage()}<br><br>`;
-                      displayOutput(sysInfo);
+                  const sysInfo = `<br>${await getBatteryPercentage()}<br><br>`;
+                  displayOutput(sysInfo);
                   })();
                   break;
                 case '.':
-                      totalPlayers = parseInt(prompt("Enter total number :"));
-                      if (isNaN(totalPlayers) || totalPlayers <= 0) {
-                      displayOutput("Invalid input. Please enter a valid number of players.");
-                  } else {
-                      displayOutput("Total number of players set to: " + totalPlayers);
+                  totalPlayers = parseInt(prompt("Enter total number :"));
+                  if (isNaN(totalPlayers) || totalPlayers <= 0) {
+                  displayOutput("Invalid input. Please enter a valid number of players.");
+                } else {
+                  displayOutput("Total number of players set to: " + totalPlayers);
                   }
                   break;
                 case ',':
-                      if (totalPlayers === 0) {
-                      displayOutput("Please set the total number of players first using '.' command.");
-                  } else {
-                      displayOutput("Number: " + getRandomNumber(totalPlayers));
+                  if (totalPlayers === 0) {
+                  displayOutput("Please set the total number of players first using '.' command.");
+                } else {
+                  displayOutput("Number: " + getRandomNumber(totalPlayers));
                   }
                   break;
                 case 'cls':
@@ -336,17 +336,35 @@ document.addEventListener('DOMContentLoaded', function () {
                   break;
                 case 'pomo':
                   if (!isTimerRunning) {
-                      pomodoroTimer(25, 5);
-                  } else {
-                      displayOutput("<br>Pomodoro timer is already running.<br><br>");
-                  }
+                  pomodoroTimer(25, 5);
+                  if (document.documentElement.requestFullscreen) {
+                  document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+                  document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                  document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+                  document.documentElement.msRequestFullscreen();
+                }
+                } else {
+                  displayOutput("<br>Pomodoro timer is already running.<br><br>");
+                }
                   break;
                 case 'doro':
                   if (isTimerRunning) {
-                      stopTimer();
-                  } else {
-                      displayOutput("<br>No Pomodoro timer is currently running.<br><br>");
-                  }
+                  stopTimer();
+                  if (document.exitFullscreen) {
+                  document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                  document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                  document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE/Edge */
+                  document.msExitFullscreen();
+                }
+                } else {
+                  displayOutput("<br>No Pomodoro timer is currently running.<br><br>");
+                }
                   break;
                 case 'secret':
                   displayOutput("<br>Password :<br><br>");
