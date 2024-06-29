@@ -397,11 +397,20 @@ document.addEventListener('DOMContentLoaded', function () {
         displayOutput('<br>Nobody yet<br><br>');
         isExpectingPassword = false;
     } else if (command.trim().toLowerCase() === 'female') {
-        displayOutput('<br>There might be a vacancy just for you 𖹭<br><br>');
-        isExpectingPassword = false;
+        displayOutput('<br>Do you really want to know ? (y/n)<br><br>');
+        isExpectingPassword = true;
+    } else if (command.trim().toLowerCase() === 'y') {
+        displayOutput('<br>Okay, are you human ??<br>Enter the captcha.<br><br><img src="captcha.png" width="256" height="256"><br><br>');
+        isExpectingPassword = true;
     } else if (command.trim().toLowerCase() === 'instander16') {
         displayOutput('<br><a href="https://drive.google.com/file/d/1Lzhu2H6W7QdaUPXZpXGwpgML1Ki70-ij/view?usp=sharing">!!!DOWNLOAD AT YOUR OWN RISK!!!</a><br><br>');
-        isExpectingPassword = false;
+        isExpectingPassword = true;
+    } else if (command.trim().toLowerCase() === 'y0c3m9t1') {
+        displayOutput('<br>So you are human. Type \'reveal\' to reveal content.<br><br>');
+        isExpectingPassword = true;
+    } else if (command.trim().toLowerCase() === 'reveal') {
+        displayOutput('<br>There might be a vacancy just for you 𖹭<br><br>');
+        isExpectingPassword = true;
     } else {
         displayOutput("<br>Wrong password.<br><br>");
         isExpectingPassword = false;
