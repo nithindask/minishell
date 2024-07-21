@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isExpectingPassword) {
             switch (command.trim().toLowerCase()) {
                 case 'help':
-                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>girlfriend&nbsp;&nbsp;&nbsp; Who is Nithin\'s girlfrend?<br>favlines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My fav movie lines.<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>works&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display my works<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>eye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Is the theme good?<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop & reset pomodoro<br>pomodor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Go to official pomodoro<br>morsie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Go to morse code translator<br>copy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View copyright info<br><br>');
+                  displayOutput('<br>whois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Who is Nithin?<br>girlfriend&nbsp;&nbsp;&nbsp; Who is Nithin\'s girlfrend?<br>favlines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My fav movie lines.<br>social&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display social profiles<br>works&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display my works<br>passwords&nbsp;&nbsp;&nbsp;&nbsp; Display online passwords<br>banner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the banner<br>cls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>refresh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refresh the terminal<br>theme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enable dark/light mode<br>eye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Is the theme good?<br>ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display your IP address<br>secret&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the password<br>battery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display battery %<br>pomo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start pomodoro timer<br>doro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop & reset pomodoro<br>pomodor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Go to official pomodoro<br>morsie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Go to morse code translator<br>copy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View copyright info<br>matrixo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Matrix calculator<br>rndmimg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Go to random image<br><br>');
                   break;
                 case 'whois':
                   displayOutput('<br>Hey there! 👋 I\'m Nithin, a passionate biology student on a journey to explore the wonders of life. Welcome to my corner of the web! Through my work, I aim to share the beauty and intricacies of the internet world. Join me in this peaceful exploration where every discovery brings a smile. 🌿✨<br><br>');
@@ -391,6 +391,12 @@ document.addEventListener('DOMContentLoaded', function () {
                   break;
                 case 'passwords':
                   window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+                  break;
+                case 'matrixo':
+                  window.open('https://nithindask.github.io/matrixo', '_blank');
+                  break;
+                case 'rndmimg':
+                  window.open('https://nithindask.github.io/randomimages', '_blank');
                   break;
                 case 'pomodor':
                   window.open('https://nithindask.github.io/pomodor', '_blank');
